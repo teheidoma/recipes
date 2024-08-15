@@ -5,5 +5,6 @@ public class Recipe {
     public String description;
     public String image;
     public String tags;
+    public float rating;
 }
 
