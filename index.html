@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<link rel="stylesheet" href="C:\Users\novak\IdeaProjects\recipe\styles.css">
-<body style="margin: 0">
+<link rel="stylesheet" href="C:\Users\Tetiana\IdeaProjects\recipes\styles.css">
+<body style="margin: 0" id="body">
 
 <div id="main">
     <div id="leftmenu">
-        <img src="Vector.svg" alt="">
+        <img src="Vector.svg" height="20px" alt="">
         <div>Cooking.Club</div>
         <img src="Vector%201.svg" alt="">
     </div>
     <div id="rightmenu">
-        <img src="Vector3.svg" alt="">
+        <img src="Vector3.svg" height="25px" alt="">
         <div id="search">
-            <img src="Vector4.svg" alt="">
-            <div style="font-size: 32px">Пошук</div>
+            <img src="Vector4.svg" id="lupa">
+            <div style="font-size: 16px">Пошук</div>
         </div>
         <div id="tags">
             #Tags
@@ -25,7 +26,82 @@
     </div>
 </div>
 
-<div style="margin: 20px">
+<div style="margin: 20px" id="recipes">
+    <div class="recipe">
+        <img style="width: 100%"
+             src="https://s3-alpha-sig.figma.com/img/a4bb/0c3e/dad554f450aed81f4dce616577c94dad?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hoCh7UhQkVpn6VCqKMVlWbIofhQFYLhhU4f5J8Cu47Vv~hK2OkdULaDNXbbpg-rKlY4NI4LY-yM5iGaJ-VPfik~Vm2PDql2vo57mRGmFRQyd-32g2Nq5OeaTOs1nENzu5h4FvGn8WaqiKstdRrnT35hDENJ6~4SKIyzQ2CVaWsrszcwLT8o9AFhussCo7vVSD9HuotzWx8KUTta8vWWfYgnF702WsVzbwYqUFbk9yOpONP6EGvNZfmtQLTE~RylTajobitV3hIb9rVRfcbBSN4ia6Z7lfXrxAbl4UqqHElOizrRef3ecM5poFn1TAlP67Z~MHUovlQoLk52xLMtInw__"
+             alt="">
+        <div class="author">
+            <img style="width: 50px; border-radius: 150px"
+                 src="https://s3-alpha-sig.figma.com/img/23ac/d8e1/1a66b20efc0e5e7719518a7e80e3dd5a?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FsrWLDANTE1muyKbNU8ZtOTq4U~VdKMNGOMcSWdAUzacg51Gwuqau-vUhBQTqqMBcP9JAv4XRb61z8WPCSPEj6cxYKwUHpRsiOYI4FoRCIdUUeL1Gc7ivnPvM6OocBGiikes7EOpNSIlFLObZhw5j34UiMxSNzB1DEuTn001zYTwTg7VR8n4sq1lAF4rc~Zl92oMHGiUAs3mUzIDidtx3HsCuNT7LgaLP1-ebNNX0f6ehNMLNEv875JGhPumYhfzvhLkGZ-ru2U5M8zFJTgdTjObb1jNUJrtRiFJhEmRjGrrFvZ~4~GjCIe8U4SZMKTs-gHyLSallWQhH6O4K48kVg__"
+                 alt="">
+            Bananana
+        </div>
+        <div style="height: 30px">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+        </div>
+        <div class="recipe-title">
+            Домашня піцца
+        </div>
+        <div class="recipe-desc">
+            Дуже смачна домашня піца на тонкому бездріжджовому тісті. Готується тісто для піци без дріжджів дуже швидко,
+            а піца з'їдається на ура!
+        </div>
+    </div>
+    <div class="recipe">
+        <img style="width: 100%"
+             src="https://s3-alpha-sig.figma.com/img/a4bb/0c3e/dad554f450aed81f4dce616577c94dad?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hoCh7UhQkVpn6VCqKMVlWbIofhQFYLhhU4f5J8Cu47Vv~hK2OkdULaDNXbbpg-rKlY4NI4LY-yM5iGaJ-VPfik~Vm2PDql2vo57mRGmFRQyd-32g2Nq5OeaTOs1nENzu5h4FvGn8WaqiKstdRrnT35hDENJ6~4SKIyzQ2CVaWsrszcwLT8o9AFhussCo7vVSD9HuotzWx8KUTta8vWWfYgnF702WsVzbwYqUFbk9yOpONP6EGvNZfmtQLTE~RylTajobitV3hIb9rVRfcbBSN4ia6Z7lfXrxAbl4UqqHElOizrRef3ecM5poFn1TAlP67Z~MHUovlQoLk52xLMtInw__"
+             alt="">
+        <div class="author">
+            <img style="width: 50px; border-radius: 150px"
+                 src="https://s3-alpha-sig.figma.com/img/23ac/d8e1/1a66b20efc0e5e7719518a7e80e3dd5a?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FsrWLDANTE1muyKbNU8ZtOTq4U~VdKMNGOMcSWdAUzacg51Gwuqau-vUhBQTqqMBcP9JAv4XRb61z8WPCSPEj6cxYKwUHpRsiOYI4FoRCIdUUeL1Gc7ivnPvM6OocBGiikes7EOpNSIlFLObZhw5j34UiMxSNzB1DEuTn001zYTwTg7VR8n4sq1lAF4rc~Zl92oMHGiUAs3mUzIDidtx3HsCuNT7LgaLP1-ebNNX0f6ehNMLNEv875JGhPumYhfzvhLkGZ-ru2U5M8zFJTgdTjObb1jNUJrtRiFJhEmRjGrrFvZ~4~GjCIe8U4SZMKTs-gHyLSallWQhH6O4K48kVg__"
+                 alt="">
+            Bananana
+        </div>
+        <div style="height: 30px">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+        </div>
+        <div class="recipe-title">
+            Домашня піцца
+        </div>
+        <div class="recipe-desc">
+            Дуже смачна домашня піца на тонкому бездріжджовому тісті. Готується тісто для піци без дріжджів дуже швидко,
+            а піца з'їдається на ура!
+        </div>
+    </div>
+    <div class="recipe">
+        <img style="width: 100%"
+             src="https://s3-alpha-sig.figma.com/img/a4bb/0c3e/dad554f450aed81f4dce616577c94dad?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hoCh7UhQkVpn6VCqKMVlWbIofhQFYLhhU4f5J8Cu47Vv~hK2OkdULaDNXbbpg-rKlY4NI4LY-yM5iGaJ-VPfik~Vm2PDql2vo57mRGmFRQyd-32g2Nq5OeaTOs1nENzu5h4FvGn8WaqiKstdRrnT35hDENJ6~4SKIyzQ2CVaWsrszcwLT8o9AFhussCo7vVSD9HuotzWx8KUTta8vWWfYgnF702WsVzbwYqUFbk9yOpONP6EGvNZfmtQLTE~RylTajobitV3hIb9rVRfcbBSN4ia6Z7lfXrxAbl4UqqHElOizrRef3ecM5poFn1TAlP67Z~MHUovlQoLk52xLMtInw__"
+             alt="">
+        <div class="author">
+            <img style="width: 50px; border-radius: 150px"
+                 src="https://s3-alpha-sig.figma.com/img/23ac/d8e1/1a66b20efc0e5e7719518a7e80e3dd5a?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FsrWLDANTE1muyKbNU8ZtOTq4U~VdKMNGOMcSWdAUzacg51Gwuqau-vUhBQTqqMBcP9JAv4XRb61z8WPCSPEj6cxYKwUHpRsiOYI4FoRCIdUUeL1Gc7ivnPvM6OocBGiikes7EOpNSIlFLObZhw5j34UiMxSNzB1DEuTn001zYTwTg7VR8n4sq1lAF4rc~Zl92oMHGiUAs3mUzIDidtx3HsCuNT7LgaLP1-ebNNX0f6ehNMLNEv875JGhPumYhfzvhLkGZ-ru2U5M8zFJTgdTjObb1jNUJrtRiFJhEmRjGrrFvZ~4~GjCIe8U4SZMKTs-gHyLSallWQhH6O4K48kVg__"
+                 alt="">
+            Bananana
+        </div>
+        <div style="height: 30px">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+            <img src="Star.svg" alt="">
+        </div>
+        <div class="recipe-title">
+            Домашня піцца
+        </div>
+        <div class="recipe-desc">
+            Дуже смачна домашня піца на тонкому бездріжджовому тісті. Готується тісто для піци без дріжджів дуже швидко,
+            а піца з'їдається на ура!
+        </div>
+    </div>
     <div class="recipe">
         <img style="width: 100%"
              src="https://s3-alpha-sig.figma.com/img/a4bb/0c3e/dad554f450aed81f4dce616577c94dad?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hoCh7UhQkVpn6VCqKMVlWbIofhQFYLhhU4f5J8Cu47Vv~hK2OkdULaDNXbbpg-rKlY4NI4LY-yM5iGaJ-VPfik~Vm2PDql2vo57mRGmFRQyd-32g2Nq5OeaTOs1nENzu5h4FvGn8WaqiKstdRrnT35hDENJ6~4SKIyzQ2CVaWsrszcwLT8o9AFhussCo7vVSD9HuotzWx8KUTta8vWWfYgnF702WsVzbwYqUFbk9yOpONP6EGvNZfmtQLTE~RylTajobitV3hIb9rVRfcbBSN4ia6Z7lfXrxAbl4UqqHElOizrRef3ecM5poFn1TAlP67Z~MHUovlQoLk52xLMtInw__"
