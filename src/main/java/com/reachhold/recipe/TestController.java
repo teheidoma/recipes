@@ -2,16 +2,20 @@ package com.reachhold.recipe;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @RestController
 public class TestController {
-    Recipe[] recipes = new Recipe[1000];
+    List<Recipe> recipes = new ArrayList<>();
 
     int counter = 0;
 
@@ -26,8 +30,7 @@ public class TestController {
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            //хліб,борошно,123 => ['хліб', 'борошно', '123']
-            String[] split = line.split(",");
+            String[] split = line.split(";;");
 
             Recipe recipe = new Recipe();
             recipe.name = split[0];
@@ -35,9 +38,19 @@ public class TestController {
             recipe.image = split[2];
             recipe.rating = Float.parseFloat(split[3]);
 
-            recipes[counter] = recipe;
-            counter++;
+            recipes.add(recipe);
         }
+    }
+
+    @RequestMapping
+    public ModelAndView home() throws FileNotFoundException {
+        ModelAndView mvc = new ModelAndView("index.html");
+        if (alreadyLoaded == false) {
+            load();
+            alreadyLoaded = true;
+        }
+        mvc.addObject("recipes", recipes);
+        return mvc;
     }
 
     @RequestMapping("/recipe/add")
@@ -47,8 +60,7 @@ public class TestController {
         recipe.description = description;
         recipe.image = image;
         recipe.rating = rating;
-        recipes[counter] = recipe;
-        counter++;
+        recipes.add(recipe);
         save(recipe);
         return "OK";
     }
@@ -56,7 +68,7 @@ public class TestController {
     boolean alreadyLoaded = false;
 
     @RequestMapping("/recipe/show")
-    Recipe[] showRecipe() throws FileNotFoundException {
+    List<Recipe> showRecipe() throws FileNotFoundException {
         if (alreadyLoaded == false) {
             load();
             alreadyLoaded = true;
@@ -66,6 +78,6 @@ public class TestController {
 
     @RequestMapping("/recipe/show_one")
     Recipe showOneRecipe(int number) {
-        return recipes[number - 1];
+        return recipes.get(number - 1);
     }
 }
