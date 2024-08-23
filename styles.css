@@ -57,12 +57,12 @@
     align-items: center;
 }
 .recipe-title {
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 700;
     font-family: Roboto;
 }
 .recipe-desc {
-    font-size: 28px;
+    font-size: 18px;
     font-family: Roboto;
     font-weight: 400;
 }
