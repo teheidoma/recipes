@@ -8,3 +8,5 @@ leib;;jahu;;https://images.unian.net/photos/2021_05/thumb_files/800_0_1621257628
 хліб;;борошно;;https://images.unian.net/photos/2021_05/thumb_files/800_0_1621257628-4746.jpg?0.46480373351538784;;4.5
 123;;123;;https://images.unian.net/photos/2021_05/thumb_files/800_0_1621257628-4746.jpg?0.46480373351538784;;3.5
 123;;123;;https://images.unian.net/photos/2021_05/thumb_files/800_0_1621257628-4746.jpg?0.46480373351538784;;4.5
+test;;2;;http://qwe.com;;4.5
+багет;;борошно;;http://qwe.com;;3.0

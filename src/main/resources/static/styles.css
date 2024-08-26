@@ -81,3 +81,30 @@
 #body {
     height: 100vh;
 }
+
+#addform {
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: fixed;
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    width: 800px;
+    height: 700px;
+    background: white;
+    border: 4px solid black;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-element {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+#description {
+    height: 300px;
+}

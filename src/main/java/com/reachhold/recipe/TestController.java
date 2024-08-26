@@ -17,11 +17,9 @@ import java.util.Scanner;
 public class TestController {
     List<Recipe> recipes = new ArrayList<>();
 
-    int counter = 0;
-
     void save(Recipe recipe) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(new FileOutputStream("recipes.txt", true));
-        out.println(recipe.name + "," + recipe.description + "," + recipe.image + "," + recipe.rating);
+        out.println(recipe.name + ";;" + recipe.description + ";;" + recipe.image + ";;" + recipe.rating);
         out.close();
     }
 

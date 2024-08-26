@@ -7,7 +7,20 @@
 </head>
 <link rel="stylesheet" href="/static/styles.css">
 <body style="margin: 0" id="body">
-
+<dialog id="addform">
+    <div class="form-element">
+        Назва
+        <input type="text">
+    </div>
+    <div class="form-element">Опис
+        <textarea id="description"></textarea>
+    </div>
+    <div class="form-element">Посилання на картинку
+        <input type="text">
+    </div>
+    <input type="hidden" value="0">
+    <button>Зберегти</button>
+</dialog>
 <div id="main">
     <div id="leftmenu">
         <img src="Vector.svg" height="20px" alt="">
@@ -23,6 +36,9 @@
         <div id="tags">
             #Tags
         </div>
+        <button ONCLICK="showDialog()">
+            +
+        </button>
     </div>
 </div>
 
@@ -53,5 +69,15 @@
         <div th:text="${recipe.description}" class="recipe-desc"></div>
     </div>
 </div>
+
+<script>
+
+
+    function showDialog() {
+        console.log("PLEASE PLEASE PLEASE OPEN IT PLEASEEE")
+    }
+
+</script>
+
 </body>
 </html>
