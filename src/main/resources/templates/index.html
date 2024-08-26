@@ -20,6 +20,7 @@
     </div>
     <input type="hidden" value="0">
     <button>Зберегти</button>
+    <button onclick="closeForm()">Відмінити</button>
 </dialog>
 <div id="main">
     <div id="leftmenu">
@@ -76,6 +77,10 @@
     function showDialog() {
         document.getElementById("addform").style.visibility = 'visible'
         // console.log("PLEASE PLEASE PLEASE OPEN IT PLEASEEE")
+    }
+
+    function closeForm() {
+        document.getElementById("addform").style.visibility = 'hidden'
     }
 
 </script>
