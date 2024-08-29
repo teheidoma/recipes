@@ -83,6 +83,8 @@
 }
 
 #addform {
+    box-shadow: 11px 11px 39px 0px rgba(0,0,0,0.28);
+    border-radius: 7px;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -93,7 +95,7 @@
     width: 800px;
     height: 700px;
     background: white;
-    border: 4px solid black;
+    border: 2px solid #EC5454;
     gap: 30px;
     justify-content: center;
     align-items: center;
@@ -107,4 +109,18 @@
 
 #description {
     height: 300px;
+}
+
+#saveButton {
+    border: 2px solid #EC5454;
+    height: 40px;
+}
+
+#closeButton {
+    border: 2px solid #EC5454;
+    height: 40px;
+}
+.fa-solid {
+
+    height: 40px;
 }
