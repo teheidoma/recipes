@@ -3,7 +3,6 @@ package com.reachhold.recipe;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +15,13 @@ import java.util.Scanner;
 @RestController
 public class TestController {
     List<Recipe> recipes = new ArrayList<>();
+    List<User> users = new ArrayList<>();
+
+
+    TestController() throws FileNotFoundException {
+        load();
+        loadUsers();
+    }
 
     void save(Recipe recipe) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(new FileOutputStream("recipes.txt", true));
@@ -40,19 +46,47 @@ public class TestController {
         }
     }
 
+    void loadUsers() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("users.txt"));
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String[] split = line.split(";;");
+
+            User user = new User();
+            user.username = split[0];
+            user.password = split[1];
+            user.avatar = split[2];
+
+            users.add(user);
+        }
+    }
+
     @RequestMapping
     public ModelAndView home() throws FileNotFoundException {
         ModelAndView mvc = new ModelAndView("index.html");
-        if (alreadyLoaded == false) {
-            load();
-            alreadyLoaded = true;
-        }
         mvc.addObject("recipes", recipes);
         return mvc;
     }
 
     @RequestMapping("/recipe/add")
-    String addRecipe(String name, String description, String image, float rating) throws FileNotFoundException {
+    ModelAndView addRecipe(String name,
+                           String description,
+                           String image,
+                           float rating,
+                           String username,
+                           String password) throws FileNotFoundException {
+        for (int i = 0; i < users.size(); i++) {
+            User user = users.get(i);
+            if (username.equals(user.username)) {
+                if (password.equals(user.password)) {
+                    break;
+                } else {
+                    return null;
+                }
+            }
+        }
+        return null;
         Recipe recipe = new Recipe();
         recipe.name = name;
         recipe.description = description;
@@ -60,22 +94,31 @@ public class TestController {
         recipe.rating = rating;
         recipes.add(recipe);
         save(recipe);
-        return "OK";
+        return new ModelAndView("redirect:/");
     }
-
-    boolean alreadyLoaded = false;
 
     @RequestMapping("/recipe/show")
     List<Recipe> showRecipe() throws FileNotFoundException {
-        if (alreadyLoaded == false) {
-            load();
-            alreadyLoaded = true;
-        }
         return recipes;
     }
 
     @RequestMapping("/recipe/show_one")
     Recipe showOneRecipe(int number) {
         return recipes.get(number - 1);
+    }
+
+    //localhost/login?username=test1&password=test
+    @RequestMapping("/login")
+    boolean login(String username,
+                  String password) {
+        for (int i = 0; i < users.size(); i++) {
+            User user = users.get(i);
+            if (username.equals(user.username)) {
+                if (password.equals(user.password)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

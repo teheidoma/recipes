@@ -112,15 +112,24 @@
 }
 
 #saveButton {
+    background: white;
     border: 2px solid #EC5454;
     height: 40px;
 }
 
 #closeButton {
+    background: white;
     border: 2px solid #EC5454;
     height: 40px;
 }
 .fa-solid {
 
     height: 40px;
+}
+
+.modal-buttons {
+    align-self: end;
+    padding-right: 70px;
+    display: flex;
+    gap: 20px;
 }
