@@ -15,5 +15,6 @@ test;;2;;http://qwe.com;;4.5
 fa;;fa;;https://ua.papirus.com.ua/img/goods/221367.jpg;;0.0
 fa;;fa;;https://ua.papirus.com.ua/img/goods/221367.jpg;;0.0
 123;;123;;https://ua.papirus.com.ua/img/goods/221367.jpg;;0.0
-;;;;;;0.0
-;;;;;;0.0
+123;;123;;123;;0.0
+444;;444;;444;;0.0
+zxc;;zxc;;zxc;;0.0

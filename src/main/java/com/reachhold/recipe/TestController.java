@@ -1,8 +1,11 @@
 package com.reachhold.recipe;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,6 +29,12 @@ public class TestController {
     void save(Recipe recipe) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(new FileOutputStream("recipes.txt", true));
         out.println(recipe.name + ";;" + recipe.description + ";;" + recipe.image + ";;" + recipe.rating);
+        out.close();
+    }
+
+    void save(User user) throws FileNotFoundException {
+        PrintWriter out = new PrintWriter(new FileOutputStream("users.txt", true));
+        out.println(user.username + ";;" + user.password);
         out.close();
     }
 
@@ -56,16 +65,17 @@ public class TestController {
             User user = new User();
             user.username = split[0];
             user.password = split[1];
-            user.avatar = split[2];
 
             users.add(user);
         }
     }
 
     @RequestMapping
-    public ModelAndView home() throws FileNotFoundException {
+    public ModelAndView home(Authentication authentication) throws FileNotFoundException {
         ModelAndView mvc = new ModelAndView("index.html");
         mvc.addObject("recipes", recipes);
+
+        mvc.addObject("user", authentication.getName());
         return mvc;
     }
 
@@ -73,20 +83,7 @@ public class TestController {
     ModelAndView addRecipe(String name,
                            String description,
                            String image,
-                           float rating,
-                           String username,
-                           String password) throws FileNotFoundException {
-        for (int i = 0; i < users.size(); i++) {
-            User user = users.get(i);
-            if (username.equals(user.username)) {
-                if (password.equals(user.password)) {
-                    break;
-                } else {
-                    return null;
-                }
-            }
-        }
-        return null;
+                           float rating) throws FileNotFoundException {
         Recipe recipe = new Recipe();
         recipe.name = name;
         recipe.description = description;
@@ -107,18 +104,40 @@ public class TestController {
         return recipes.get(number - 1);
     }
 
-    //localhost/login?username=test1&password=test
-    @RequestMapping("/login")
-    boolean login(String username,
-                  String password) {
-        for (int i = 0; i < users.size(); i++) {
-            User user = users.get(i);
-            if (username.equals(user.username)) {
-                if (password.equals(user.password)) {
-                    return true;
+    @RequestMapping("/registration")
+    ModelAndView registration() throws FileNotFoundException {
+        ModelAndView mvc = new ModelAndView("registration");
+        return mvc;
+    }
+
+    @RequestMapping("/registration2")
+    ModelAndView registration2(String Login, String pass1, String pass2) throws FileNotFoundException {
+        if (pass1.equals(pass2)) {
+            boolean userExists = false;
+            for (int i = 0; i < users.size(); i++) {
+                User user = users.get(i);
+                if (user.username.equals(Login)) {
+                    userExists = true;
                 }
             }
+            if (userExists) {
+                throw new IllegalArgumentException("User already exists");
+            }
+
+
+            User user = new User();
+            user.username = Login;
+            user.password = pass1;
+            save(user);
+            users.add(user);
+            return new ModelAndView("redirect:/");
+        } else {
+            throw new IllegalArgumentException("Wrong password");
         }
-        return false;
     }
+
+//    @GetMapping("/login")
+//    ModelAndView login() {
+//        return new ModelAndView("login");
+//    }
 }
