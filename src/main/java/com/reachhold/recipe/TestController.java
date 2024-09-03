@@ -78,4 +78,15 @@ public class TestController {
     Recipe showOneRecipe(int number) {
         return recipes.get(number - 1);
     }
+
+    @RequestMapping("/registration")
+    ModelAndView registration() throws FileNotFoundException {
+        ModelAndView mvc = new ModelAndView("registration");
+        return mvc;
+    }
+    @RequestMapping("/registration2")
+    ModelAndView registration2(String Login, String pass1, String pass2) throws FileNotFoundException {
+        ModelAndView mvc = new ModelAndView("/registration2");
+        return mvc;
+    }
 }
