@@ -94,8 +94,8 @@
     display: flex;
     visibility: hidden;
     flex-direction: column;
-    width: 600px;
-    height: 700px;
+    width: 900px;
+    height: 900px;
     background: white;
     border: 2px solid #EC5454;
     gap: 30px;

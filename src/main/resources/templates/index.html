@@ -4,9 +4,13 @@
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" integrity="sha384-oOE/3m0LUMPub4kaC09mrdEhIc+e3exm4xOGxAmuFXhBNF4hcg/6MiAXAf5p0P56" crossorigin="anonymous"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet"
+          integrity="sha384-oOE/3m0LUMPub4kaC09mrdEhIc+e3exm4xOGxAmuFXhBNF4hcg/6MiAXAf5p0P56" crossorigin="anonymous"/>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="editormd/css/editormd.css"/>
+
 </head>
 <body style="margin: 0" id="body">
 <form action="/recipe/add">
@@ -22,6 +26,11 @@
         <div class="form-group">
             <label>Посилання на картинку</label>
             <input class="form-control" name="image" type="text">
+        </div>
+        <div id="test-editor">
+            <textarea>### Editor.md
+
+            </textarea>
         </div>
         <input type="hidden" name="rating" value="0.0">
         <div class="modal-buttons">
@@ -82,7 +91,11 @@
 </div>
 
 <script>
-
+    for (let rec of document.getElementsByClassName("recipe")) {
+        rec.addEventListener('click', () => {
+            window.location = '/recipe'
+        })
+    }
 
     function showDialog() {
         document.getElementById("addform").style.visibility = 'visible'
@@ -95,5 +108,17 @@
 
 </script>
 <script src="https://kit.fontawesome.com/89a549f415.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="editormd/editormd.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var editor = editormd("test-editor", {
+            // width  : "100%",
+            // height : "100%",
+            saveHTMLToTextarea : true,
+            path   : "editormd/lib/"
+        });
+    });
+</script>
 </body>
 </html>

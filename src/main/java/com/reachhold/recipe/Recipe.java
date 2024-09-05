@@ -5,6 +5,8 @@ public class Recipe {
     public String description;
     public String image;
     public float rating;
-    public String tags;
+    public String author;
+    public String[] ingridients;
+    public String instruction;
 }
 

@@ -39,7 +39,7 @@ public class RecipeApplication {
                 .formLogin(Customizer.withDefaults())
                 .formLogin(fm -> fm.loginPage("/login").permitAll())
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/registration", "/registration2", "/", "/styles.css", "/**.png", "/**.jpg", "/**.svg", "/**.ttf").permitAll()
+                    auth.requestMatchers("/registration", "/registration2", "/", "/recipe", "/**.css", "/editormd/**", "/**.png", "/**.jpg", "/**.svg", "/**.ttf").permitAll()
                             .anyRequest().authenticated();
                 })
                 .build();

@@ -1,16 +1,16 @@
 package com.reachhold.recipe;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,15 +21,15 @@ public class TestController {
     List<User> users = new ArrayList<>();
 
 
-    TestController() throws FileNotFoundException {
+    TestController() throws IOException {
         load();
         loadUsers();
     }
 
-    void save(Recipe recipe) throws FileNotFoundException {
-        PrintWriter out = new PrintWriter(new FileOutputStream("recipes.txt", true));
-        out.println(recipe.name + ";;" + recipe.description + ";;" + recipe.image + ";;" + recipe.rating);
-        out.close();
+    void save() throws IOException {
+        FileOutputStream fos = new FileOutputStream("recipes.txt", false);
+        JsonMapper mapper = new JsonMapper();
+        mapper.writeValue(fos, recipes);
     }
 
     void save(User user) throws FileNotFoundException {
@@ -38,21 +38,8 @@ public class TestController {
         out.close();
     }
 
-    void load() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("recipes.txt"));
-
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            String[] split = line.split(";;");
-
-            Recipe recipe = new Recipe();
-            recipe.name = split[0];
-            recipe.description = split[1];
-            recipe.image = split[2];
-            recipe.rating = Float.parseFloat(split[3]);
-
-            recipes.add(recipe);
-        }
+    void load() throws IOException {
+        recipes = new ArrayList<>(List.of(new JsonMapper().readValue(new File("recipes.txt"), Recipe[].class)));
     }
 
     void loadUsers() throws FileNotFoundException {
@@ -87,20 +74,30 @@ public class TestController {
     ModelAndView addRecipe(String name,
                            String description,
                            String image,
-                           float rating) throws FileNotFoundException {
+                           float rating,
+                           @RequestParam("test-editor-html-code") String instruction) throws IOException {
         Recipe recipe = new Recipe();
         recipe.name = name;
         recipe.description = description;
         recipe.image = image;
         recipe.rating = rating;
+        recipe.instruction = instruction;
         recipes.add(recipe);
-        save(recipe);
+        save();
         return new ModelAndView("redirect:/");
     }
 
     @RequestMapping("/recipe/show")
     List<Recipe> showRecipe() throws FileNotFoundException {
         return recipes;
+    }
+
+    @RequestMapping("/recipe")
+    ModelAndView recipe(Integer number) {
+        Recipe recipe = recipes.get(number - 1);
+        ModelAndView mvc = new ModelAndView("recipe");
+        mvc.addObject("recipe", recipe);
+        return mvc;
     }
 
     @RequestMapping("/recipe/show_one")
