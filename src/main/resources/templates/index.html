@@ -4,27 +4,29 @@
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" integrity="sha384-oOE/3m0LUMPub4kaC09mrdEhIc+e3exm4xOGxAmuFXhBNF4hcg/6MiAXAf5p0P56" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<link rel="stylesheet" href="/static/styles.css">
 <body style="margin: 0" id="body">
 <form action="/recipe/add">
     <dialog id="addform">
-        <div class="form-element">
-            Назва
-            <input name="name" type="text">
+        <div class="form-group">
+            <label>Назва</label>
+            <input name="name" class="form-control" type="text">
         </div>
-        <div class="form-element">
-            Опис
-            <textarea name="description" id="description"></textarea>
+        <div class="form-group">
+            <label>Опис</label>
+            <textarea class="form-control" name="description"></textarea>
         </div>
-        <div class="form-element">
-            Посилання на картинку
-            <input name="image" type="text">
+        <div class="form-group">
+            <label>Посилання на картинку</label>
+            <input class="form-control" name="image" type="text">
         </div>
         <input type="hidden" name="rating" value="0.0">
         <div class="modal-buttons">
-            <button type="submit" id="saveButton">Зберегти</button>
-            <button id="closeButton" onclick="closeForm()">Відмінити <i class="fa-solid fa-xmark"></i></button>
+            <button type="submit" class="btn btn-primary">Зберегти</button>
+            <button class="btn btn-danger" onclick="closeForm()">Відмінити</button>
         </div>
     </dialog>
 </form>
@@ -61,7 +63,7 @@
                  src="https://s3-alpha-sig.figma.com/img/23ac/d8e1/1a66b20efc0e5e7719518a7e80e3dd5a?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FsrWLDANTE1muyKbNU8ZtOTq4U~VdKMNGOMcSWdAUzacg51Gwuqau-vUhBQTqqMBcP9JAv4XRb61z8WPCSPEj6cxYKwUHpRsiOYI4FoRCIdUUeL1Gc7ivnPvM6OocBGiikes7EOpNSIlFLObZhw5j34UiMxSNzB1DEuTn001zYTwTg7VR8n4sq1lAF4rc~Zl92oMHGiUAs3mUzIDidtx3HsCuNT7LgaLP1-ebNNX0f6ehNMLNEv875JGhPumYhfzvhLkGZ-ru2U5M8zFJTgdTjObb1jNUJrtRiFJhEmRjGrrFvZ~4~GjCIe8U4SZMKTs-gHyLSallWQhH6O4K48kVg__"
                  alt="">
             Bananana
-            <div style="height: 30px">
+            <div style="height: 30px" class="stars">
                 <img th:if="${recipe.rating} > 1.0" src="Star.svg" alt="">
                 <img th:unless="${recipe.rating} > 1.0" src="Star_empty.svg" alt="">
                 <img th:if="${recipe.rating} > 2.0" src="Star.svg" alt="">
