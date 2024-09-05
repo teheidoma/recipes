@@ -110,17 +110,15 @@ public class TestController {
 
     @RequestMapping("/registration")
     ModelAndView registration() throws FileNotFoundException {
-        ModelAndView mvc = new ModelAndView("registration");
-        return mvc;
+        return new ModelAndView("registration");
     }
 
     @RequestMapping("/registration2")
-    ModelAndView registration2(String Login, String pass1, String pass2) throws FileNotFoundException {
+    ModelAndView registration2(String login, String pass1, String pass2) throws FileNotFoundException {
         if (pass1.equals(pass2)) {
             boolean userExists = false;
-            for (int i = 0; i < users.size(); i++) {
-                User user = users.get(i);
-                if (user.username.equals(Login)) {
+            for (User user : users) {
+                if (user.username.equals(login)) {
                     userExists = true;
                     break;
                 }
@@ -131,7 +129,7 @@ public class TestController {
 
 
             User user = new User();
-            user.username = Login;
+            user.username = login;
             user.password = pass1;
             save(user);
             users.add(user);
