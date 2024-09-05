@@ -14,8 +14,6 @@ import java.util.Scanner;
 
 @Component
 public class UserPerehodnik implements UserDetailsService {
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
@@ -38,9 +36,6 @@ public class UserPerehodnik implements UserDetailsService {
             String line = scanner.nextLine();
             String[] split = line.split(";;");
 
-//            User user = new User();
-//            user.username = split[0];
-//            user.password = split[1];
             UserDetails user = new User(split[0], split[1], List.of());
 
             list.add(user);

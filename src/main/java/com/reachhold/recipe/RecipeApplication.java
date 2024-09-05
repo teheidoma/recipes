@@ -37,9 +37,9 @@ public class RecipeApplication {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
                 .formLogin(Customizer.withDefaults())
-//                .formLogin(fm -> fm.loginPage("/login2"))
+                .formLogin(fm -> fm.loginPage("/login").permitAll())
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/registration", "/registration2", "/", "/styles.css", "/**.png", "/**.jpg", "/**.svg", "/**.ttf", "/login2").permitAll()
+                    auth.requestMatchers("/registration", "/registration2", "/", "/styles.css", "/**.png", "/**.jpg", "/**.svg", "/**.ttf").permitAll()
                             .anyRequest().authenticated();
                 })
                 .build();

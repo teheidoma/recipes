@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="/styles.css"/>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" integrity="sha384-oOE/3m0LUMPub4kaC09mrdEhIc+e3exm4xOGxAmuFXhBNF4hcg/6MiAXAf5p0P56" crossorigin="anonymous"/>
 </head>
 <body>
-<form action="/registration2">
-Логиін
-<input type="text" name="Login">
-Пароль
-<input type="password" name="pass1">
-Повторити пароль
-<input type="password" name="pass2">
-<button type="submit">Зареєструватися</button>
-</form>
+<div class="container">
+    <form class="form-signin" action="/registration2">
+        <h2 class="form-signin-heading">Реєстрація</h2>
+        <p>
+            <label for="username" class="sr-only">Логін</label>
+            <input type="text" id="username" name="login" class="form-control" placeholder="Логін" required autofocus>
+        </p>
+        <p>
+            <label for="password" class="sr-only">Пароль</label>
+            <input type="password" id="password" name="pass1" class="form-control" placeholder="Пароль" required>
+        </p>
+        <p>
+            <label for="password" class="sr-only">Повторіть пароль</label>
+            <input type="password" id="password" name="pass2" class="form-control" placeholder="Пароль" required>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Реєстрація</button>
+    </form>
+</div>
 </body>
 </html>

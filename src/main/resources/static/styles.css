@@ -133,3 +133,21 @@
     display: flex;
     gap: 20px;
 }
+
+.regform {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.field {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.field input {
+    height: 30px;
+}

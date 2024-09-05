@@ -75,7 +75,11 @@ public class TestController {
         ModelAndView mvc = new ModelAndView("index.html");
         mvc.addObject("recipes", recipes);
 
-        mvc.addObject("user", authentication.getName());
+        if (authentication != null) {
+            mvc.addObject("user", authentication.getName());
+        } else {
+            mvc.addObject("user", "guest");
+        }
         return mvc;
     }
 
@@ -118,6 +122,7 @@ public class TestController {
                 User user = users.get(i);
                 if (user.username.equals(Login)) {
                     userExists = true;
+                    break;
                 }
             }
             if (userExists) {
@@ -136,8 +141,8 @@ public class TestController {
         }
     }
 
-//    @GetMapping("/login")
-//    ModelAndView login() {
-//        return new ModelAndView("login");
-//    }
+    @GetMapping("/login")
+    ModelAndView login() {
+        return new ModelAndView("login");
+    }
 }
