@@ -92,6 +92,11 @@ public class TestController {
         return recipes;
     }
 
+    @RequestMapping("/recipe/create")
+    ModelAndView createRecipe() throws FileNotFoundException {
+        return new ModelAndView("create");
+    }
+
     @RequestMapping("/recipe")
     ModelAndView recipe(Integer number) {
         Recipe recipe = recipes.get(number - 1);

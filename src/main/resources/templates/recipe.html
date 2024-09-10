@@ -6,10 +6,52 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<h2 th:text="${recipe.name}"></h2>
-recipe!!
-<div th:utext="${recipe.instruction}"></div>
+<div id="main">
+    <div id="leftmenu">
+        <img src="Vector.svg" height="20px" alt="">
+        <div>Cooking.Club</div>
+        <img src="Vector%201.svg" alt="">
+    </div>
+    <div id="rightmenu">
+        <a href="/login"><img src="Vector3.svg" height="25px" alt=""></a>
+        <!--/*@thymesVar id="user" type="java.lang.String"*/-->
+        <!--        <img th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}" height="25px" alt="">-->
+        <div id="search">
+            <img src="Vector4.svg" id="lupa">
+            <div style="font-size: 16px">Пошук</div>
+        </div>
+        <div id="tags">
+            #Tags
+        </div>
+    </div>
+</div>
+<div class="recipe-show">
+    <div style="display: flex">
+        <img src="https://i.ytimg.com/vi/WS7SCtkpzRY/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShNMA8=&rs=AOn4CLCEvFSEmEnxB1NODnFBdT0Ju4onOQ"
+             alt="">
+        <div style="display: flex; flex-direction: column; gap: 20px; flex-grow: 1">
+            <div style="display: flex">
+                <div class="name">ім'я</div>
+                <div class="stars">stars</div>
+            </div>
+            <div>author</div>
+            <div>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div>instruction</div>
+</div>
 </body>
 </html>

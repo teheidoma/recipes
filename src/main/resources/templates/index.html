@@ -13,32 +13,6 @@
 
 </head>
 <body style="margin: 0" id="body">
-<form action="/recipe/add">
-    <dialog id="addform">
-        <div class="form-group">
-            <label>Назва</label>
-            <input name="name" class="form-control" type="text">
-        </div>
-        <div class="form-group">
-            <label>Опис</label>
-            <textarea class="form-control" name="description"></textarea>
-        </div>
-        <div class="form-group">
-            <label>Посилання на картинку</label>
-            <input class="form-control" name="image" type="text">
-        </div>
-        <div id="test-editor">
-            <textarea>### Editor.md
-
-            </textarea>
-        </div>
-        <input type="hidden" name="rating" value="0.0">
-        <div class="modal-buttons">
-            <button type="submit" class="btn btn-primary">Зберегти</button>
-            <button class="btn btn-danger" onclick="closeForm()">Відмінити</button>
-        </div>
-    </dialog>
-</form>
 <div id="main">
     <div id="leftmenu">
         <img src="Vector.svg" height="20px" alt="">
@@ -63,7 +37,7 @@
 </div>
 
 <div style="margin: 20px" id="recipes">
-    <div th:each="recipe : ${recipes}" class="recipe">
+    <div th:each="recipe : ${recipes}" class="recipe" th:id="${recipeStat.index}">
         <img style="height: 200px"
              th:src="${recipe.image}"
              alt="">
@@ -91,15 +65,16 @@
 </div>
 
 <script>
+    // var index = 0;
     for (let rec of document.getElementsByClassName("recipe")) {
-        rec.addEventListener('click', () => {
-            window.location = '/recipe'
+        rec.addEventListener('click', (e) => {
+            console.log("clicked on ", rec.id)
+            window.location = '/recipe?number=' + (parseInt(rec.id) + 1)
         })
     }
 
     function showDialog() {
-        document.getElementById("addform").style.visibility = 'visible'
-        // console.log("PLEASE PLEASE PLEASE OPEN IT PLEASEEE")
+        document.location = '/create'
     }
 
     function closeForm() {
@@ -111,12 +86,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="editormd/editormd.js"></script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         var editor = editormd("test-editor", {
             // width  : "100%",
             // height : "100%",
-            saveHTMLToTextarea : true,
-            path   : "editormd/lib/"
+            saveHTMLToTextarea: true,
+            path: "editormd/lib/"
         });
     });
 </script>

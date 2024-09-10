@@ -66,6 +66,7 @@
     font-family: Roboto;
     font-weight: 400;
 }
+
 #lupa {
     padding-left: 10px;
 }
@@ -85,19 +86,14 @@
 }
 
 #addform {
-    box-shadow: 11px 11px 39px 0px rgba(0,0,0,0.28);
+    /*box-shadow: 11px 11px 39px 0px rgba(0,0,0,0.28);*/
     border-radius: 7px;
-    /*left: 50%;*/
-    /*top: 50%;*/
-    /*transform: translateX(-50%) translateY(-50%);*/
-    position: fixed;
     display: flex;
-    visibility: hidden;
     flex-direction: column;
-    width: 900px;
-    height: 900px;
+    width: 80%;
     background: white;
-    border: 2px solid #EC5454;
+    padding: 20px;
+    /*border: 2px solid #EC5454;*/
     gap: 30px;
     justify-content: center;
     align-items: center;
@@ -153,4 +149,13 @@
 }
 .field input {
     height: 30px;
+}
+
+.recipe-show {
+    display: flex;
+    flex-direction: column;
+}
+.recipe-show img {
+    width: 300px;
+    height: 300px;
 }
