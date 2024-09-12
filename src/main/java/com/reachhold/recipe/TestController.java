@@ -34,7 +34,7 @@ public class TestController {
     }
 
     void saveUsers() throws IOException {
-        try(FileOutputStream fos = new FileOutputStream("recipes.txt", false)) {
+        try(FileOutputStream fos = new FileOutputStream("users.txt", false)) {
             JsonMapper mapper = new JsonMapper();
             mapper.writeValue(fos, users);
         }

@@ -1,5 +1,6 @@
 package com.reachhold.recipe;
 
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,19 +26,17 @@ public class UserPerehodnik implements UserDetailsService {
                 }
             }
             throw new UsernameNotFoundException(username);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    ArrayList<UserDetails> loadUsers() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("users.txt"));
+    ArrayList<UserDetails> loadUsers() throws IOException {
+        com.reachhold.recipe.User[] users = new JsonMapper().readValue(new File("users.txt"), com.reachhold.recipe.User[].class);
         ArrayList<UserDetails> list = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            String[] split = line.split(";;");
+        for (com.reachhold.recipe.User u : users) {
 
-            UserDetails user = new User(split[0], split[1], List.of());
+            UserDetails user = new User(u.username, u.password, List.of());
 
             list.add(user);
         }
