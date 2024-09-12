@@ -20,15 +20,12 @@
         <img src="Vector%201.svg" alt="">
     </div>
     <div id="rightmenu">
-        <a href="/login"><img src="Vector3.svg" height="25px" alt=""></a>
-        <!--/*@thymesVar id="user" type="java.lang.String"*/-->
-        <img th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}" height="25px" alt="">
+
+        <a th:if="${user == 'guest'}" href="/login"><img src="Vector3.svg" height="25px" alt=""></a>
+        <img th:if="${user != 'guest'}" th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}" height="25px" alt="">
         <div id="search">
             <img src="Vector4.svg" id="lupa">
             <div style="font-size: 16px">Пошук</div>
-        </div>
-        <div id="tags">
-            #Tags
         </div>
         <button ONCLICK="showDialog()">
             +
@@ -74,7 +71,7 @@
     }
 
     function showDialog() {
-        document.location = '/create'
+        document.location = '/recipe/create'
     }
 
     function closeForm() {

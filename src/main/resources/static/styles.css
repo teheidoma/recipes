@@ -17,6 +17,7 @@
     font-family: Ranches;
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 #rightmenu {
     display: flex;

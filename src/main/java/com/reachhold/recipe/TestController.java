@@ -27,34 +27,39 @@ public class TestController {
     }
 
     void save() throws IOException {
-        FileOutputStream fos = new FileOutputStream("recipes.txt", false);
-        JsonMapper mapper = new JsonMapper();
-        mapper.writeValue(fos, recipes);
+        try(FileOutputStream fos = new FileOutputStream("recipes.txt", false)) {
+            JsonMapper mapper = new JsonMapper();
+            mapper.writeValue(fos, recipes);
+        }
     }
 
-    void save(User user) throws FileNotFoundException {
-        PrintWriter out = new PrintWriter(new FileOutputStream("users.txt", true));
-        out.println(user.username + ";;" + user.password);
-        out.close();
+    void saveUsers() throws IOException {
+        try(FileOutputStream fos = new FileOutputStream("recipes.txt", false)) {
+            JsonMapper mapper = new JsonMapper();
+            mapper.writeValue(fos, users);
+        }
     }
 
     void load() throws IOException {
-        recipes = new ArrayList<>(List.of(new JsonMapper().readValue(new File("recipes.txt"), Recipe[].class)));
+        File source = new File("recipes.txt");
+        if (!source.exists()) {
+            source.createNewFile();
+            FileOutputStream fos = new FileOutputStream(source);
+            fos.write("[]".getBytes());
+            fos.close();
+        }
+        recipes = new ArrayList<>(List.of(new JsonMapper().readValue(source, Recipe[].class)));
     }
 
-    void loadUsers() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("users.txt"));
-
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            String[] split = line.split(";;");
-
-            User user = new User();
-            user.username = split[0];
-            user.password = split[1];
-
-            users.add(user);
+    void loadUsers() throws IOException {
+        File source = new File("users.txt");
+        if (!source.exists()) {
+            source.createNewFile();
+            FileOutputStream fos = new FileOutputStream(source);
+            fos.write("[]".getBytes());
+            fos.close();
         }
+        users = new ArrayList<>(List.of(new JsonMapper().readValue(source, User[].class)));
     }
 
     @RequestMapping
@@ -116,7 +121,7 @@ public class TestController {
     }
 
     @RequestMapping("/registration2")
-    ModelAndView registration2(String login, String pass1, String pass2) throws FileNotFoundException {
+    ModelAndView registration2(String login, String pass1, String pass2) throws IOException {
         if (pass1.equals(pass2)) {
             boolean userExists = false;
             for (User user : users) {
@@ -133,8 +138,8 @@ public class TestController {
             User user = new User();
             user.username = login;
             user.password = pass1;
-            save(user);
             users.add(user);
+            saveUsers();
             return new ModelAndView("redirect:/");
         } else {
             throw new IllegalArgumentException("Wrong password");
