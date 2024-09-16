@@ -148,6 +148,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .field input {
     height: 30px;
 }
@@ -156,7 +157,33 @@
     display: flex;
     flex-direction: column;
 }
+
 .recipe-show img {
     width: 300px;
     height: 300px;
+}
+
+#recipe-name {
+    font-size: 40px;
+    font-weight: bold;
+    padding-left: 40px ;
+    padding-right: 40px;
+}
+
+#recipe-author {
+    font-size: 20px;
+    padding-left: 40px;
+}
+
+#ingridiens {
+    font-size: 15px;
+    border: 2px solid #EC5454;
+    border-radius: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#instruction {
+    font-size: 20px;
+    padding-left: 40px;
 }

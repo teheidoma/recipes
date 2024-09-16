@@ -56,7 +56,7 @@
                 <img th:unless="${recipe.rating} > 5.0" src="Star_empty.svg" alt="">
             </div>
         </div>
-        <div th:text="${recipe.name}" class="recipe-title"></div>
+        <div th:text="${recipe.name}" class="recipe-title" name></div>
         <div th:text="${recipe.description}" class="recipe-desc"></div>
     </div>
 </div>
