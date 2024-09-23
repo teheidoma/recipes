@@ -79,13 +79,17 @@ public class TestController {
     ModelAndView addRecipe(String name,
                            String description,
                            String image,
+                           String ingridients,
                            float rating,
-                           @RequestParam("test-editor-html-code") String instruction) throws IOException {
+                           @RequestParam("test-editor-html-code") String instruction,
+                           Authentication authentication) throws IOException {
         Recipe recipe = new Recipe();
         recipe.name = name;
+        recipe.ingridients = ingridients.split(",");
         recipe.description = description;
         recipe.image = image;
         recipe.rating = rating;
+        recipe.author = authentication.getName();
         recipe.instruction = instruction;
         recipes.add(recipe);
         save();

@@ -35,23 +35,31 @@
         <img src="https://i.ytimg.com/vi/WS7SCtkpzRY/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShNMA8=&rs=AOn4CLCEvFSEmEnxB1NODnFBdT0Ju4onOQ"
              alt="">
         <div style="display: flex; flex-direction: column; gap: 20px; flex-grow: 1">
-            <div style="display: flex">
-                <div id="recipe-name"  class="name"> ім'я  </div>
-                <div class="stars">stars</div>
+            <div style="display: flex;  align-items: center">
+                <div id="recipe-name"  class="name" th:text="${recipe.name}"> ім'я  </div>
+                <div style="height: 30px;" class="stars">
+                    <img th:if="${recipe.rating} > 1.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 1.0" src="Star_empty.svg" alt="">
+                    <img th:if="${recipe.rating} > 2.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 2.0" src="Star_empty.svg" alt="">
+                    <img th:if="${recipe.rating} > 3.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 3.0" src="Star_empty.svg" alt="">
+                    <img th:if="${recipe.rating} > 4.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 4.0" src="Star_empty.svg" alt="">
+                    <img th:if="${recipe.rating} > 5.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 5.0" src="Star_empty.svg" alt="">
+                </div>
             </div>
-            <div id="recipe-author">  author </div>
-            <div>
-                <ul id="ingridiens">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
+            <div id="recipe-author" th:text="${recipe.author}">  author </div>
+            <div th:if="${recipe.ingridients} != null">
+                <ul id="ingridiens" th:each="ing : ${recipe.ingridients}">
+                    <li th:text="${ing}">1</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div id="instruction">instruction</div>
+    <div id="instruction" th:utext="${recipe.instruction}">instruction</div>
 </div>
 </body>
 </html>

@@ -9,4 +9,3 @@ public class Recipe {
     public String[] ingridients;
     public String instruction;
 }
-
