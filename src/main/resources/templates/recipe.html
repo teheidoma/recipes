@@ -53,10 +53,10 @@
             <div id="recipe-author" th:text="${recipe.author}">  author </div>
             <div th:if="${recipe.ingridients} != null">
                 <ul id="ingridiens" th:each="ing : ${recipe.ingridients}">
-                    <li>
+                    <li style="display: flex; width: 200px; gap: 5px">
                         <div th:text="${ing.split('-')[0]}"></div>
-                        <div></div>
-                        <div></div>
+                        <div style="flex-grow: 1; background: url('/dots.svg') 0 1em repeat-x;"></div>
+                        <div th:if="${ing.split('-').length > 1}" th:text="${ing.split('-')[1]}">3</div>
                     </li>
                 </ul>
             </div>
