@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -22,7 +23,8 @@
     <div id="rightmenu">
 
         <a th:if="${user == 'guest'}" href="/login"><img src="Vector3.svg" height="25px" alt=""></a>
-        <img th:if="${user != 'guest'}" th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}" height="25px" alt="">
+        <img th:if="${user != 'guest'}" th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}"
+             height="25px" alt="">
         <div id="search">
             <img src="Vector4.svg" id="lupa">
             <div style="font-size: 16px">Пошук</div>
@@ -38,26 +40,28 @@
         <img style="height: 200px"
              th:src="${recipe.image}"
              alt="">
-        <div class="author">
-            <img style="width: 50px; border-radius: 150px"
-                 src="https://s3-alpha-sig.figma.com/img/23ac/d8e1/1a66b20efc0e5e7719518a7e80e3dd5a?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FsrWLDANTE1muyKbNU8ZtOTq4U~VdKMNGOMcSWdAUzacg51Gwuqau-vUhBQTqqMBcP9JAv4XRb61z8WPCSPEj6cxYKwUHpRsiOYI4FoRCIdUUeL1Gc7ivnPvM6OocBGiikes7EOpNSIlFLObZhw5j34UiMxSNzB1DEuTn001zYTwTg7VR8n4sq1lAF4rc~Zl92oMHGiUAs3mUzIDidtx3HsCuNT7LgaLP1-ebNNX0f6ehNMLNEv875JGhPumYhfzvhLkGZ-ru2U5M8zFJTgdTjObb1jNUJrtRiFJhEmRjGrrFvZ~4~GjCIe8U4SZMKTs-gHyLSallWQhH6O4K48kVg__"
-                 alt="">
-            Bananana
-            <div style="height: 30px" class="stars">
-                <img th:if="${recipe.rating} > 1.0" src="Star.svg" alt="">
-                <img th:unless="${recipe.rating} > 1.0" src="Star_empty.svg" alt="">
-                <img th:if="${recipe.rating} > 2.0" src="Star.svg" alt="">
-                <img th:unless="${recipe.rating} > 2.0" src="Star_empty.svg" alt="">
-                <img th:if="${recipe.rating} > 3.0" src="Star.svg" alt="">
-                <img th:unless="${recipe.rating} > 3.0" src="Star_empty.svg" alt="">
-                <img th:if="${recipe.rating} > 4.0" src="Star.svg" alt="">
-                <img th:unless="${recipe.rating} > 4.0" src="Star_empty.svg" alt="">
-                <img th:if="${recipe.rating} > 5.0" src="Star.svg" alt="">
-                <img th:unless="${recipe.rating} > 5.0" src="Star_empty.svg" alt="">
+        <div class="recipe-inner">
+            <div class="author">
+                <img style="width: 50px; border-radius: 150px"
+                     src="https://s3-alpha-sig.figma.com/img/23ac/d8e1/1a66b20efc0e5e7719518a7e80e3dd5a?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FsrWLDANTE1muyKbNU8ZtOTq4U~VdKMNGOMcSWdAUzacg51Gwuqau-vUhBQTqqMBcP9JAv4XRb61z8WPCSPEj6cxYKwUHpRsiOYI4FoRCIdUUeL1Gc7ivnPvM6OocBGiikes7EOpNSIlFLObZhw5j34UiMxSNzB1DEuTn001zYTwTg7VR8n4sq1lAF4rc~Zl92oMHGiUAs3mUzIDidtx3HsCuNT7LgaLP1-ebNNX0f6ehNMLNEv875JGhPumYhfzvhLkGZ-ru2U5M8zFJTgdTjObb1jNUJrtRiFJhEmRjGrrFvZ~4~GjCIe8U4SZMKTs-gHyLSallWQhH6O4K48kVg__"
+                     alt="">
+                Bananana
+                <div style="height: 30px" class="stars">
+                    <img th:if="${recipe.rating} > 1.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 1.0" src="Star_empty.svg" alt="">
+                    <img th:if="${recipe.rating} > 2.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 2.0" src="Star_empty.svg" alt="">
+                    <img th:if="${recipe.rating} > 3.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 3.0" src="Star_empty.svg" alt="">
+                    <img th:if="${recipe.rating} > 4.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 4.0" src="Star_empty.svg" alt="">
+                    <img th:if="${recipe.rating} > 5.0" src="Star.svg" alt="">
+                    <img th:unless="${recipe.rating} > 5.0" src="Star_empty.svg" alt="">
+                </div>
             </div>
+            <div th:text="${recipe.name}" class="recipe-title" name></div>
+            <div th:text="${recipe.description}" class="recipe-desc"></div>
         </div>
-        <div th:text="${recipe.name}" class="recipe-title" name></div>
-        <div th:text="${recipe.description}" class="recipe-desc"></div>
     </div>
 </div>
 
