@@ -107,10 +107,16 @@ public class TestController {
     }
 
     @RequestMapping("/recipe")
-    ModelAndView recipe(Integer number) {
+    ModelAndView recipe(Integer number,
+                        Authentication authentication) {
         Recipe recipe = recipes.get(number - 1);
         ModelAndView mvc = new ModelAndView("recipe");
         mvc.addObject("recipe", recipe);
+        if (authentication != null) {
+            mvc.addObject("user", authentication.getName());
+        } else {
+            mvc.addObject("user", "guest");
+        }
         return mvc;
     }
 

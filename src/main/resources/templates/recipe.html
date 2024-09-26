@@ -11,20 +11,51 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body style="display: flex; flex-direction: column">
+<div id="main">
+    <div id="leftmenu">
+        <img src="Vector.svg" height="20px" alt="">
+        <div>Cooking.Club</div>
+        <img src="Vector%201.svg" alt="">
+    </div>
+    <div id="rightmenu">
 
-<div>
-    <div class="recipe-show-image"></div>
+        <a th:if="${user == 'guest'}" href="/login"><img src="Vector3.svg" height="25px" alt=""></a>
+        <img th:if="${user != 'guest'}" th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}"
+             height="25px" alt="">
+        <div id="search">
+            <img src="Vector4.svg" id="lupa">
+            <div style="font-size: 16px">Пошук</div>
+        </div>
+        <button ONCLICK="showDialog()">
+            +
+        </button>
+    </div>
 </div>
-<div class = "author-name">
-    <div>recipeauthor</div>
-    <div >recipename</div>
+<div>
+    <div class="recipe-show-image" th:style="'background: url(\'' + ${recipe.image} + '\'); background-size: cover;background-position: center ; '"></div>
+</div>
+<div class="author-name">
+    <div style="display: flex; align-items: center; gap: 10px">
+        <img th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}" height="25px" alt="">
+        <div style="font-family: Montserrat; font-size: 30px" th:text="${recipe.author}">recipeauthor</div>
+    </div>
+    <div style="font-family: Montserrat; font-weight: bold; font-size: 48px" th:text="${recipe.name}">recipename</div>
 </div>
 <div class="ing-des">
-    <div>ingridients</div>
-    <div>description</div>
+    <div th:if="${recipe.ingridients} != null">
+        <ul id="ingridiens" th:each="ing : ${recipe.ingridients}">
+            <li style="display: flex; width: 400px; gap: 10px">
+                <div th:text="${ing.split('-')[0]}"></div>
+                <div style="height: 20px; background: url(/dots.svg) 0 1em repeat-x; flex-grow: 1"></div>
+                <div th:if="${ing.split('-').length > 1}" th:text="${ing.split('-')[1]}"></div>
+            </li>
+        </ul>
+    </div>
+    <div style="font-size: 30px; font-family: Montserrat; flex-grow: 1" th:text="${recipe.description}">description
+    </div>
 </div>
 <div>
-    <div>instraction</div>
+    <div style="padding-left: 100px; padding-right:100px;  font-family: Montserrat" th:utext="${recipe.instruction}">instraction</div>
 </div>
 
 
