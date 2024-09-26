@@ -43,7 +43,7 @@ public class RecipeApplication {
                                     "/registration2",
                                     "/",
                                     "/recipe",
-                                    "/**.css",
+                                    "/*.css",
                                     "/editormd/**",
                                     "/**.png",
                                     "/**.jpg",

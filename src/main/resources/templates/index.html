@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css"/>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -22,7 +23,8 @@
     <div id="rightmenu">
 
         <a th:if="${user == 'guest'}" href="/login"><img src="Vector3.svg" height="25px" alt=""></a>
-        <img th:if="${user != 'guest'}" th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}" height="25px" alt="">
+        <img th:if="${user != 'guest'}" th:src="'https://avatar.iran.liara.run/public/'+${(user.hashCode() % 25) + 1}"
+             height="25px" alt="">
         <div id="search">
             <img src="Vector4.svg" id="lupa">
             <div style="font-size: 16px">Пошук</div>
